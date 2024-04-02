@@ -5,7 +5,7 @@
 #include "pico/stdlib.h"
 
 // The LED is connected to GPIO 25
-#define LED_PIN 25
+#define LED_PIN 16
 
 // Main (runs on core 0)
 int main() {
@@ -18,10 +18,10 @@ int main() {
         // Set high
         gpio_put(LED_PIN, 1);
         // Sleep
-        sleep_ms(250);
+        sleep_ms(100);
         // Set low
         gpio_put(LED_PIN, 0);
         // Sleep
-        sleep_ms(250);
+        sleep_ms(100);
     }
 }
