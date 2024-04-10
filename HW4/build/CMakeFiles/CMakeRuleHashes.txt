@@ -1,0 +1,25 @@
+# Hashes of file build rules.
+c4e451cecaeff7fd924158f766401291 hw4/CMakeFiles/ELF2UF2Build
+223468f8c5424180974b5974c48e7a75 hw4/CMakeFiles/ELF2UF2Build-complete
+1f92c94f8955734b3bf6f6355dc77b25 hw4/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-build
+e61be1ca7a1c1b0284ad213c2daa870a hw4/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-configure
+8a1a35a17498842296a4e8f9ef4c71a0 hw4/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-download
+b7a38306272a2d5a93a2547b8fe69d8d hw4/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-install
+1854a15b4ee9a7df2bd0657961fddb70 hw4/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-mkdir
+6d646dd24701cc9738192b8261a3892d hw4/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-patch
+2851587b4930fe60ec505806e15595a6 hw4/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-update
+318790170661bbe4569e2768b5b9484a pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin
+318790170661bbe4569e2768b5b9484a pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_asm
+fc5d1578b24bdfa6fe2063d9ce1232c6 pico-sdk/src/rp2_common/boot_stage2/bs2_default.bin
+d0d7a57fb4a86fa59549732106c8bf4c pico-sdk/src/rp2_common/boot_stage2/bs2_default_padded_checksummed.S
+e96979f9763feefce3b295688077691b pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/PioasmBuild
+622c05b28717556e07a834ef175e5e83 pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/PioasmBuild-complete
+e96979f9763feefce3b295688077691b pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h
+1fe79280886962e05443900386b36593 pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h
+43edf6d86a557acaef1aabb819891fd3 pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-build
+179b864ac7809862c92d1d8d51adb822 pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-configure
+afb746d90853c6a216fe35aca2bbdb25 pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-download
+b5cd6bd68e3bf533c9a26da703d727c2 pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-install
+58e19c59f245a309fe2c098a1d22f337 pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-mkdir
+3e1701d0a67f5907589977277d11e7a0 pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-patch
+dc9ec50619ee260e126f8bf0d988b025 pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-update
