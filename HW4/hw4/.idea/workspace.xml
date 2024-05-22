@@ -7,8 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95021876-a507-4ba5-b858-a00dcec81944" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/hw4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hw4.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pico/pico-examples/HW2/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Pico/pico-examples/HW2/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pico/pico-examples/HW2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Pico/pico-examples/HW2/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +60,7 @@
       <updated>1712711192488</updated>
       <workItem from="1712711194541" duration="3000" />
       <workItem from="1713408720160" duration="22000" />
+      <workItem from="1715756279538" duration="63000" />
     </task>
     <servers />
   </component>
