@@ -1,0 +1,73 @@
+import csv
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Function to apply IIR low-pass filter
+def iir_low_pass_filter(data, A, B):
+    filtered_data = np.zeros(len(data))
+    filtered_data[0] = B * data[0]
+    for i in range(1, len(data)):
+        filtered_data[i] = A * filtered_data[i-1] + B * data[i]
+    return filtered_data
+
+# File names
+file_names = ['sigA.csv', 'sigB.csv', 'sigC.csv', 'sigD.csv']
+# Values of A and B to try
+AB_values = [(0.9, 0.1), (0.7, 0.3), (0.5, 0.5), (0.3, 0.7), (0.1, 0.9)]  # Example values, adjust as needed
+
+for file_name in file_names:
+    # Read data from CSV
+    t = []  # column 0
+    data1 = []  # column 1
+
+    with open(file_name) as f:
+        reader = csv.reader(f)
+        for row in reader:
+            t.append(float(row[0]))  # leftmost column
+            data1.append(float(row[1]))  # second column
+
+    # Convert lists to numpy arrays
+    t = np.array(t)
+    data1 = np.array(data1)
+
+    # Define sampling parameters
+    Fs = 1 / (t[1] - t[0])  # sample rate from the time difference
+    n = len(data1)  # length of the signal
+
+    # Compute FFT for the original data
+    Y_original = np.fft.fft(data1) / n  # FFT computing and normalization
+    Y_original = Y_original[:n//2]  # One side frequency range
+    frq = np.fft.fftfreq(n, d=1/Fs)[:n//2]  # Frequency range
+
+    for A, B in AB_values:
+        # Apply IIR low-pass filter
+        data_filtered = iir_low_pass_filter(data1, A, B)
+        t_filtered = t[:len(data_filtered)]  # Adjust time array
+
+        # Compute FFT for the filtered data
+        n_filtered = len(data_filtered)
+        Y_filtered = np.fft.fft(data_filtered) / n_filtered
+        Y_filtered = Y_filtered[:n_filtered//2]
+        frq_filtered = np.fft.fftfreq(n_filtered, d=1/Fs)[:n_filtered//2]
+
+        # Plotting
+        fig, (ax1, ax2) = plt.subplots(2, 1)
+        fig.suptitle(f'{file_name} with A={A}, B={B}')
+
+        # Time series plot
+        ax1.plot(t, data1, 'k', label='Original')
+        ax1.plot(t_filtered, data_filtered, 'r', label='Filtered')
+        ax1.set_xlabel('Time')
+        ax1.set_ylabel('Amplitude')
+        ax1.legend()
+
+        # FFT plot
+        ax2.loglog(frq, abs(Y_original), 'k', label='Original')
+        ax2.loglog(frq_filtered, abs(Y_filtered), 'r', label='Filtered')
+        ax2.set_xlabel('Freq (Hz)')
+        ax2.set_ylabel('|Y(freq)|')
+        ax2.legend()
+
+        # Save the plot
+        plt.savefig(f'A{A}_B{B}{file_name.split(".")[0]}.png')
+        plt.close()  # Close the figure to avoid displaying it in a loop

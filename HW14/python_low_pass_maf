@@ -1,0 +1,69 @@
+import csv
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Function to apply moving average filter
+def moving_average(data, X):
+    return np.convolve(data, np.ones(X)/X, mode='valid')
+
+# File names
+file_names = ['sigA.csv', 'sigB.csv', 'sigC.csv', 'sigD.csv']
+# Values of X to try
+X_values = [10, 50, 100]  # Example values, adjust as needed
+
+for file_name in file_names:
+    # Read data from CSV
+    t = []  # column 0
+    data1 = []  # column 1
+
+    with open(file_name) as f:
+        reader = csv.reader(f)
+        for row in reader:
+            t.append(float(row[0]))  # leftmost column
+            data1.append(float(row[1]))  # second column
+
+    # Convert lists to numpy arrays
+    t = np.array(t)
+    data1 = np.array(data1)
+
+    # Define sampling parameters
+    Fs = 1 / (t[1] - t[0])  # sample rate from the time difference
+    n = len(data1)  # length of the signal
+
+    # Compute FFT for the original data
+    Y_original = np.fft.fft(data1) / n  # FFT computing and normalization
+    Y_original = Y_original[:n//2]  # One side frequency range
+    frq = np.fft.fftfreq(n, d=1/Fs)[:n//2]  # Frequency range
+
+    for X in X_values:
+        # Apply moving average filter
+        data_filtered = moving_average(data1, X)
+        t_filtered = t[:len(data_filtered)]  # Adjust time array
+
+        # Compute FFT for the filtered data
+        n_filtered = len(data_filtered)
+        Y_filtered = np.fft.fft(data_filtered) / n_filtered
+        Y_filtered = Y_filtered[:n_filtered//2]
+        frq_filtered = np.fft.fftfreq(n_filtered, d=1/Fs)[:n_filtered//2]
+
+        # Plotting
+        fig, (ax1, ax2) = plt.subplots(2, 1)
+        fig.suptitle(f'{file_name} with X={X}')
+
+        # Time series plot
+        ax1.plot(t, data1, 'k', label='Original')
+        ax1.plot(t_filtered, data_filtered, 'r', label='Filtered')
+        ax1.set_xlabel('Time')
+        ax1.set_ylabel('Amplitude')
+        ax1.legend()
+
+        # FFT plot
+        ax2.loglog(frq, abs(Y_original), 'k', label='Original')
+        ax2.loglog(frq_filtered, abs(Y_filtered), 'r', label='Filtered')
+        ax2.set_xlabel('Freq (Hz)')
+        ax2.set_ylabel('|Y(freq)|')
+        ax2.legend()
+
+        # Save the plot
+        plt.savefig(f'X{X}{file_name.split(".")[0]}.png')
+        plt.close()  # Close the figure to avoid displaying it in a loop
